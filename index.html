@@ -1,119 +1,102 @@
-Claro. Como o material original **não informa o tempo de preparo**, coloquei **45 minutos** como tempo estimado.
-
-```html
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bala de Laranja Cristalizada — Prato Limpo</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Catálogo digital de receitas para aproveitar melhor os alimentos.">
+<title>Prato Limpo | Catálogo</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <header class="topo">
-        <div class="topo-inner">
-            <p class="marca">Prato Limpo</p>
+<header class="cabecalho">
+  <div class="marca">
+    <div class="logo">♻</div>
+    <div><strong>PRATO LIMPO</strong><small>cozinha sem desperdício</small></div>
+  </div>
+  <div class="cabecalho-info">♻ Aproveitamento &nbsp; • &nbsp; 🍃 Sustentabilidade</div>
+</header>
 
-            <nav>
-                <ul>
-                    <li><a href="index.html">Início</a></li>
-                    <li><a href="sobre.html">Sobre</a></li>
-                    <li><a href="catalogo.html">Catálogo</a></li>
-                    <li><a href="index.html#contato">Contato</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<main>
+<section class="hero">
+  <div class="hero-conteudo">
+    <span class="etiqueta">CATÁLOGO DIGITAL</span>
+    <h1>Transforme o que seria<br><strong>desperdício em sabor.</strong></h1>
+    <p>Encontre receitas criativas para aproveitar cascas, talos, sementes e sobras de alimentos.</p>
+    <div class="estatisticas">
+      <div><strong id="totalReceitas">0</strong><span>receitas</span></div>
+      <div><strong id="totalCategorias">0</strong><span>categorias</span></div>
+      <div><strong id="totalFavoritos">0</strong><span>favoritos</span></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="circulo">♻</div><div class="folha folha1">🍃</div>
+    <div class="folha folha2">🌿</div><div class="semente">🌱</div>
+  </div>
+</section>
 
-    <a href="catalogo.html" class="aba-receitas">Receitas</a>
+<section class="catalogo">
+  <div class="titulo-secao">
+    <span class="mini-etiqueta">EXPLORE</span>
+    <h2>Receitas que aproveitam tudo</h2>
+    <p>Escolha uma receita e descubra uma nova forma de aproveitar os alimentos.</p>
+  </div>
 
-    <main>
+  <div class="controles">
+    <div class="campo-busca"><span>⌕</span><input id="busca" type="search" placeholder="Buscar por receita, ingrediente..."></div>
+    <div class="filtros" id="filtros">
+      <button class="filtro ativo" data-categoria="todos">Todas</button>
+      <button class="filtro" data-categoria="cascas">Cascas</button>
+      <button class="filtro" data-categoria="talos">Talos e folhas</button>
+      <button class="filtro" data-categoria="sementes">Sementes</button>
+      <button class="filtro" data-categoria="sobras">Sobras</button>
+    </div>
+    <label class="favoritos-toggle"><input type="checkbox" id="mostrarFavoritos"> <span>♡</span> Somente favoritos</label>
+  </div>
 
-        <section class="receita-banner"
-            style="background-image: url('foto-laranja-cristalizada.jpg');">
-            <h1>Bala de Laranja Cristalizada</h1>
-        </section>
+  <div class="resultado-info">
+    <span id="resultadoTexto"></span>
+    <button id="limparFiltros" class="limpar">Limpar filtros</button>
+  </div>
 
-        <div class="container">
+  <div class="grid-receitas" id="gridReceitas"></div>
 
-            <div class="receita-corpo">
+  <div class="sem-resultados" id="semResultados">
+    <div>🍃</div><h3>Nenhuma receita encontrada</h3>
+    <p>Tente buscar outro termo ou alterar os filtros.</p>
+  </div>
+</section>
+</main>
 
-                <div>
-                    <h2>Informações</h2>
+<footer class="rodape">
+  <div><strong>PRATO LIMPO</strong><p>Mais aproveitamento, menos desperdício.</p></div>
+  <span>♻️ Tecnologia e educação alimentar</span>
+</footer>
 
-                    <div class="caixa-info">
-                        <p><strong>Tempo de preparo:</strong> 45 minutos</p>
-                        <p><strong>Dificuldade:</strong> Fácil</p>
-                        <p><strong>Aproveitamento:</strong> Casca de laranja</p>
-                    </div>
+<div class="modal-fundo" id="modalFundo" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="fechar-modal" id="fecharModal">×</button>
+    <div class="modal-imagem" id="modalImagem"></div>
+    <div class="modal-conteudo">
+      <div class="modal-topo">
+        <div><span class="modal-categoria" id="modalCategoria"></span><h2 id="modalTitulo"></h2></div>
+        <button class="botao-favorito-modal" id="favoritoModal">♡</button>
+      </div>
+      <p class="modal-descricao" id="modalDescricao"></p>
+      <div class="dados-receita">
+        <div><span>⏱</span><strong id="modalTempo"></strong><small>tempo</small></div>
+        <div><span>◉</span><strong id="modalDificuldade"></strong><small>dificuldade</small></div>
+        <div><span>♻</span><strong id="modalAproveitamento"></strong><small>aproveitamento</small></div>
+      </div>
+      <div class="modal-grid">
+        <div><h3>Ingredientes</h3><ul id="modalIngredientes"></ul></div>
+        <div><h3>Modo de preparo</h3><ol id="modalPreparo"></ol></div>
+      </div>
+      <div class="dica-receita"><strong>💡 Aproveitamento</strong><p id="modalDica"></p></div>
+    </div>
+  </div>
+</div>
 
-                    <h2>Ingredientes</h2>
-
-                    <div class="lista-ingredientes">
-                        <ul>
-                            <li>3 cascas de laranja</li>
-                            <li>1 xícara de açúcar (300 ml)</li>
-                        </ul>
-                    </div>
-
-                    <div class="caixa-info">
-                        <strong>Você sabia?</strong>
-
-                        Imunidade: tem mais vitamina C que a própria polpa da fruta.
-                        Digestão: as fibras e os óleos ajudam o intestino e reduzem gases.
-                        Calmante: o chá da casca ajuda a relaxar e melhora o sono.
-                        Antioxidantes: combate radicais livres por causa dos flavonoides.
-                    </div>
-                </div>
-
-                <div>
-                    <h2>Modo de Preparo</h2>
-
-                    <div class="passo">
-                        <h3>Passo 1</h3>
-                        <p>Corte a casca em tiras e lave.</p>
-                    </div>
-
-                    <div class="passo">
-                        <h3>Passo 2</h3>
-                        <p>Coloque em uma panela com água e deixe ferver.</p>
-                    </div>
-
-                    <div class="passo">
-                        <h3>Passo 3</h3>
-                        <p>
-                            Leve novamente à panela e adicione açúcar.
-                            Não precisa de água, pois a casca libera bastante.
-                        </p>
-                    </div>
-
-                    <div class="passo">
-                        <h3>Passo 4</h3>
-                        <p>
-                            Mexa até o açúcar grudar na casca de laranja e secar.
-                        </p>
-                    </div>
-
-                    <div class="passo">
-                        <h3>Indicação</h3>
-                        <p>
-                            Lave 3 vezes e ferva 3 vezes em águas diferentes.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </main>
-
-    <footer class="rodape">
-        <p>Prato Limpo — Cozinha sem Desperdício</p>
-        <p>&copy; 2026 Prato Limpo. Todos os direitos reservados.</p>
-    </footer>
-
+<script src="script.js"></script>
 </body>
 </html>
-```

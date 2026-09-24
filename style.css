@@ -1,27 +1,53 @@
-
+```css
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
 
-/* =========================
-   VARIÁVEIS
-========================= */
+/* =========================================================
+   PALETA TECNOLÓGICA — AGRICULTURA + TECNOLOGIA
+========================================================= */
 
 :root {
-    --verde: #244f3c;
-    --verde2: #36745a;
-    --claro: #e7f0e9;
-    --creme: #f8f5ed;
-    --branco: #fff;
-    --laranja: #d87943;
-    --texto: #24322b;
-    --cinza: #6d7771;
-    --borda: #e3e5df;
-    --sombra: 0 18px 45px rgba(36, 79, 60, .10);
+    --verde: #164b35;
+    --verde2: #247a50;
+    --verde3: #3aa66a;
+    --verde-neon: #70e59a;
+
+    --verde-escuro: #0d3023;
+    --verde-fundo: #e7f3e8;
+    --verde-claro: #d9efdc;
+
+    --creme: #faf7ed;
+    --bege: #f3ead8;
+    --bege2: #eee4cf;
+
+    --branco: #ffffff;
+
+    --laranja: #e58a4d;
+    --laranja-claro: #f3b477;
+
+    --amarelo: #e8c84a;
+    --amarelo-claro: #f7e9a5;
+
+    --vermelho: #d96b5d;
+    --vermelho-claro: #f1b3aa;
+
+    --texto: #20352a;
+    --cinza: #68766e;
+    --borda: #d8e2d7;
+
+    --neon: rgba(112, 229, 154, .75);
+
+    --sombra:
+        0 18px 45px rgba(22, 75, 53, .12);
+
+    --sombra-tech:
+        0 0 0 1px rgba(112, 229, 154, .12),
+        0 12px 35px rgba(22, 75, 53, .13);
 }
 
 
-/* =========================
+/* =========================================================
    RESET / BASE
-========================= */
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -29,10 +55,26 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "DM Sans", sans-serif;
     color: var(--texto);
-    background: var(--creme);
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(112, 229, 154, .10),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(232, 200, 74, .08),
+            transparent 25%
+        ),
+        var(--creme);
+
     line-height: 1.6;
 }
 
@@ -46,25 +88,75 @@ button {
 }
 
 
-/* =========================
+/* =========================================================
+   DETALHES TECNOLÓGICOS
+========================================================= */
+
+.cabecalho,
+.hero,
+.catalogo,
+.rodape {
+    position: relative;
+}
+
+.cabecalho::after,
+.hero::after,
+.catalogo::after {
+    content: "";
+    position: absolute;
+
+    left: 7%;
+    right: 7%;
+    bottom: 0;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--verde-neon),
+            var(--amarelo),
+            var(--laranja),
+            transparent
+        );
+
+    box-shadow:
+        0 0 8px rgba(112, 229, 154, .55);
+
+    opacity: .7;
+}
+
+
+/* =========================================================
    CABEÇALHO
-========================= */
+========================================================= */
 
 .cabecalho {
     min-height: 78px;
     padding: 0 7%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    background: rgba(248, 245, 237, .96);
+    background:
+        linear-gradient(
+            135deg,
+            rgba(250, 247, 237, .97),
+            rgba(231, 243, 232, .95)
+        );
+
     border-bottom: 1px solid var(--borda);
 
     position: sticky;
     top: 0;
     z-index: 50;
 
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 4px 20px rgba(22, 75, 53, .06);
 }
 
 .marca {
@@ -82,14 +174,27 @@ button {
 
     border-radius: 13px;
 
-    background: var(--verde);
+    background:
+        linear-gradient(
+            135deg,
+            var(--verde),
+            var(--verde2)
+        );
+
     color: #fff;
 
     font-size: 23px;
+
+    box-shadow:
+        0 0 0 1px rgba(112, 229, 154, .35),
+        0 0 18px rgba(112, 229, 154, .28);
+
+    border: 1px solid rgba(112, 229, 154, .45);
 }
 
 .marca strong {
     display: block;
+
     color: var(--verde);
 
     letter-spacing: 1.5px;
@@ -98,47 +203,96 @@ button {
 
 .marca small {
     display: block;
+
     color: var(--cinza);
+
     font-size: 11px;
 }
 
 .cabecalho-info {
     color: var(--verde2);
+
     font-size: 13px;
     font-weight: 600;
+
+    padding: 7px 13px;
+
+    border: 1px solid rgba(58, 166, 106, .25);
+    border-radius: 20px;
+
+    background: rgba(217, 239, 220, .45);
+
+    box-shadow:
+        inset 0 0 12px rgba(112, 229, 154, .08);
 }
 
 
-/* =========================
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero {
     min-height: 440px;
+
     padding: 70px 10%;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     gap: 50px;
 
     background:
         radial-gradient(
-            circle at 80% 25%,
-            rgba(54, 116, 90, .18),
+            circle at 82% 25%,
+            rgba(58, 166, 106, .20),
             transparent 28%
+        ),
+        radial-gradient(
+            circle at 15% 85%,
+            rgba(232, 200, 74, .13),
+            transparent 22%
         ),
         linear-gradient(
             135deg,
-            #eef3eb 0%,
-            #f8f5ed 68%
+            #e7f3e8 0%,
+            #faf7ed 60%,
+            #f3ead8 100%
         );
 
     overflow: hidden;
 }
 
+
+/* linhas tecnológicas do hero */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(36, 122, 80, .035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(36, 122, 80, .035) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    pointer-events: none;
+}
+
 .hero-conteudo {
     max-width: 700px;
+
+    position: relative;
+    z-index: 2;
 }
 
 .etiqueta,
@@ -147,48 +301,95 @@ button {
 
     font-size: 12px;
     font-weight: 800;
+
     letter-spacing: 2px;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.etiqueta::before,
+.mini-etiqueta::before {
+    content: "";
+
+    width: 22px;
+    height: 2px;
+
+    background: var(--laranja);
+
+    box-shadow:
+        0 0 8px rgba(229, 138, 77, .6);
 }
 
 .hero h1 {
     margin: 12px 0 18px;
 
     font-family: "Playfair Display", serif;
+
     color: var(--verde);
 
     font-size: clamp(38px, 5vw, 66px);
+
     line-height: 1.08;
 }
 
 .hero h1 strong {
     color: var(--laranja);
+
+    text-shadow:
+        0 0 18px rgba(229, 138, 77, .15);
 }
 
 .hero p {
     max-width: 610px;
 
     color: var(--cinza);
+
     font-size: 17px;
 }
 
 
-/* =========================
+/* =========================================================
    ESTATÍSTICAS
-========================= */
+========================================================= */
 
 .estatisticas {
     display: flex;
+
     gap: 35px;
+
     margin-top: 32px;
 }
 
 .estatisticas div {
     display: flex;
     flex-direction: column;
+
+    position: relative;
+    padding-left: 12px;
+}
+
+.estatisticas div::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 4px;
+    bottom: 4px;
+
+    width: 2px;
+
+    background: var(--verde-neon);
+
+    box-shadow:
+        0 0 8px rgba(112, 229, 154, .7);
 }
 
 .estatisticas strong {
     color: var(--verde);
+
     font-size: 25px;
 }
 
@@ -196,20 +397,23 @@ button {
     color: var(--cinza);
 
     font-size: 12px;
+
     text-transform: uppercase;
+
     letter-spacing: .8px;
 }
 
 
-/* =========================
+/* =========================================================
    VISUAL DO HERO
-========================= */
+========================================================= */
 
 .hero-visual {
     width: 310px;
     height: 310px;
 
     position: relative;
+
     flex-shrink: 0;
 }
 
@@ -218,18 +422,31 @@ button {
     height: 245px;
 
     position: absolute;
+
     inset: 30px;
 
     display: grid;
     place-items: center;
 
-    border: 2px dashed rgba(36, 79, 60, .3);
+    border:
+        2px dashed rgba(36, 122, 80, .35);
+
     border-radius: 50%;
 
     color: var(--verde);
-    background: rgba(255, 255, 255, .55);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.75),
+            rgba(217,239,220,.4)
+        );
 
     font-size: 92px;
+
+    box-shadow:
+        0 0 0 8px rgba(112, 229, 154, .05),
+        0 0 35px rgba(58, 166, 106, .14);
 }
 
 .folha,
@@ -245,9 +462,13 @@ button {
     border-radius: 50%;
 
     background: #fff;
-    box-shadow: var(--sombra);
+
+    box-shadow:
+        var(--sombra-tech);
 
     font-size: 28px;
+
+    border: 1px solid rgba(112, 229, 154, .35);
 }
 
 .folha1 {
@@ -263,16 +484,20 @@ button {
 .semente {
     right: 0;
     bottom: 55px;
+
+    border-color: rgba(232, 200, 74, .45);
 }
 
 
-/* =========================
+/* =========================================================
    CATÁLOGO
-========================= */
+========================================================= */
 
 .catalogo {
     max-width: 1300px;
+
     margin: auto;
+
     padding: 70px 5% 90px;
 }
 
@@ -286,48 +511,70 @@ button {
     color: var(--verde);
 
     font-family: "Playfair Display", serif;
+
     font-size: clamp(28px, 4vw, 43px);
 }
 
 .titulo-secao p {
     margin-top: 5px;
+
     color: var(--cinza);
 }
 
 
-/* =========================
+/* =========================================================
    CONTROLES
-========================= */
+========================================================= */
 
 .controles {
     display: flex;
+
     align-items: center;
+
     flex-wrap: wrap;
 
     gap: 13px;
+
     margin-bottom: 17px;
 }
 
 .campo-busca {
     min-width: 280px;
     max-width: 430px;
+
     flex: 1;
 
     height: 49px;
 
     display: flex;
     align-items: center;
+
     gap: 9px;
 
     padding: 0 15px;
 
-    background: #fff;
-    border: 1px solid var(--borda);
+    background: rgba(255,255,255,.9);
+
+    border:
+        1px solid var(--borda);
+
     border-radius: 13px;
+
+    box-shadow:
+        inset 0 0 15px rgba(58, 166, 106, .04);
+}
+
+.campo-busca:focus-within {
+    border-color: var(--verde3);
+
+    box-shadow:
+        0 0 0 3px rgba(112, 229, 154, .12),
+        0 0 18px rgba(112, 229, 154, .12);
 }
 
 .campo-busca span {
-    color: var(--cinza);
+    color: var(--verde2);
+
     font-size: 24px;
 }
 
@@ -338,50 +585,69 @@ button {
     outline: 0;
 
     color: var(--texto);
+
     background: transparent;
 }
 
 
-/* =========================
+/* =========================================================
    FILTROS
-========================= */
+========================================================= */
 
 .filtros {
     display: flex;
+
     gap: 7px;
+
     flex-wrap: wrap;
 }
 
 .filtro {
     padding: 10px 14px;
 
-    border: 1px solid var(--borda);
+    border:
+        1px solid var(--borda);
+
     border-radius: 10px;
 
     color: var(--cinza);
+
     background: #fff;
 
     font-size: 12px;
     font-weight: 700;
+
+    transition: .2s ease;
 }
 
 .filtro:hover,
 .filtro.ativo {
-    background: var(--verde);
-    border-color: var(--verde);
+    background:
+        linear-gradient(
+            135deg,
+            var(--verde),
+            var(--verde2)
+        );
+
+    border-color: var(--verde3);
+
     color: #fff;
+
+    box-shadow:
+        0 0 12px rgba(112, 229, 154, .25);
 }
 
 
-/* =========================
+/* =========================================================
    FAVORITOS
-========================= */
+========================================================= */
 
 .favoritos-toggle {
     margin-left: auto;
 
     display: flex;
     align-items: center;
+
     gap: 6px;
 
     color: var(--cinza);
@@ -393,81 +659,135 @@ button {
 }
 
 .favoritos-toggle input {
-    accent-color: var(--verde);
+    accent-color: var(--verde3);
 }
 
 .favoritos-toggle span {
     color: var(--laranja);
+
     font-size: 20px;
+
+    text-shadow:
+        0 0 8px rgba(229, 138, 77, .3);
 }
 
 
-/* =========================
+/* =========================================================
    RESULTADOS
-========================= */
+========================================================= */
 
 .resultado-info {
     min-height: 35px;
+
     margin-bottom: 20px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     color: var(--cinza);
+
     font-size: 13px;
 }
 
 .limpar {
     border: 0;
+
     background: transparent;
 
-    color: var(--laranja);
+    color: var(--vermelho);
+
     font-weight: 700;
 
     display: none;
 }
 
 
-/* =========================
+/* =========================================================
    GRID DE RECEITAS
-========================= */
+========================================================= */
 
 .grid-receitas {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
     gap: 22px;
 }
 
 
-/* =========================
+/* =========================================================
    CARD
-========================= */
+========================================================= */
 
 .card {
     position: relative;
+
     overflow: hidden;
 
-    background: #fff;
-    border: 1px solid var(--borda);
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #fdfbf5
+        );
+
+    border:
+        1px solid var(--borda);
+
     border-radius: 19px;
 
-    box-shadow: 0 7px 25px rgba(36, 79, 60, .06);
+    box-shadow:
+        0 7px 25px rgba(36, 79, 60, .07);
 
     transition:
         transform .2s ease,
-        box-shadow .2s ease;
+        box-shadow .2s ease,
+        border-color .2s ease;
+}
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 18px;
+    right: 18px;
+
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--verde-neon),
+            var(--amarelo),
+            var(--laranja)
+        );
+
+    opacity: .65;
+
+    box-shadow:
+        0 0 9px rgba(112, 229, 154, .45);
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--sombra);
+
+    border-color:
+        rgba(58, 166, 106, .45);
+
+    box-shadow:
+        var(--sombra-tech);
 }
 
 
-/* =========================
+/* =========================================================
    IMAGEM DO CARD
-========================= */
+========================================================= */
 
 .card-imagem {
     height: 205px;
@@ -476,18 +796,38 @@ button {
     place-items: center;
 
     position: relative;
+
     overflow: hidden;
 
-    background: linear-gradient(
-        135deg,
-        var(--claro),
-        #f5eee2
-    );
+    background:
+        linear-gradient(
+            135deg,
+            var(--verde-claro),
+            var(--bege)
+        );
+}
+
+.card-imagem::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            transparent 65%,
+            rgba(112, 229, 154, .12)
+        );
+
+    pointer-events: none;
 }
 
 .card-imagem img {
     width: 100%;
     height: 100%;
+
     object-fit: cover;
 }
 
@@ -496,40 +836,56 @@ button {
 }
 
 
-/* =========================
+/* =========================================================
    FAVORITO DO CARD
-========================= */
+========================================================= */
 
 .card-favorito {
     width: 37px;
     height: 37px;
 
     position: absolute;
+
     right: 12px;
     top: 12px;
 
     border: 0;
+
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, .94);
+    background:
+        rgba(255,255,255,.95);
+
     color: var(--laranja);
 
     font-size: 21px;
 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, .08);
+    box-shadow:
+        0 4px 15px rgba(0,0,0,.08);
 
     z-index: 2;
+
+    transition: .2s ease;
+}
+
+.card-favorito:hover {
+    box-shadow:
+        0 0 12px rgba(229, 138, 77, .4);
 }
 
 .card-favorito.ativo {
     background: var(--laranja);
+
     color: #fff;
+
+    box-shadow:
+        0 0 14px rgba(229, 138, 77, .35);
 }
 
 
-/* =========================
+/* =========================================================
    CONTEÚDO DO CARD
-========================= */
+========================================================= */
 
 .card-conteudo {
     padding: 18px;
@@ -542,6 +898,7 @@ button {
     font-weight: 800;
 
     text-transform: uppercase;
+
     letter-spacing: 1.2px;
 }
 
@@ -551,7 +908,9 @@ button {
     color: var(--verde);
 
     font-family: "Playfair Display", serif;
+
     font-size: 21px;
+
     line-height: 1.2;
 }
 
@@ -561,32 +920,41 @@ button {
     color: var(--cinza);
 
     font-size: 12px;
+
     line-height: 1.45;
 }
 
 
-/* =========================
+/* =========================================================
    RODAPÉ DO CARD
-========================= */
+========================================================= */
 
 .card-rodape {
     margin-top: 15px;
+
     padding-top: 13px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     gap: 10px;
 
-    border-top: 1px solid var(--borda);
+    border-top:
+        1px solid var(--borda);
 }
 
 .card-dados {
     display: flex;
+
     flex-direction: column;
+
     gap: 2px;
 
     color: var(--cinza);
+
     font-size: 10px;
 }
 
@@ -594,23 +962,43 @@ button {
     padding: 8px 11px;
 
     border: 0;
+
     border-radius: 9px;
 
-    background: var(--verde);
+    background:
+        linear-gradient(
+            135deg,
+            var(--verde),
+            var(--verde2)
+        );
+
     color: #fff;
 
     font-size: 11px;
     font-weight: 700;
+
+    box-shadow:
+        0 0 0 1px rgba(112, 229, 154, .15);
+
+    transition: .2s ease;
 }
 
 .ver-receita:hover {
-    background: var(--verde2);
+    background:
+        linear-gradient(
+            135deg,
+            var(--verde2),
+            var(--verde3)
+        );
+
+    box-shadow:
+        0 0 14px rgba(112, 229, 154, .35);
 }
 
 
-/* =========================
+/* =========================================================
    SEM RESULTADOS
-========================= */
+========================================================= */
 
 .sem-resultados {
     display: none;
@@ -626,6 +1014,7 @@ button {
 
 .sem-resultados h3 {
     margin-top: 10px;
+
     color: var(--verde);
 }
 
@@ -634,19 +1023,55 @@ button {
 }
 
 
-/* =========================
+/* =========================================================
    RODAPÉ
-========================= */
+========================================================= */
 
 .rodape {
     padding: 30px 7%;
 
     display: flex;
+
     justify-content: space-between;
+
     gap: 20px;
 
-    background: var(--verde);
+    background:
+        linear-gradient(
+            135deg,
+            var(--verde-escuro),
+            var(--verde)
+        );
+
     color: #fff;
+
+    border-top:
+        1px solid rgba(112, 229, 154, .3);
+}
+
+.rodape::before {
+    content: "";
+
+    position: absolute;
+
+    left: 7%;
+    right: 7%;
+    top: 0;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--verde-neon),
+            var(--amarelo),
+            var(--laranja),
+            transparent
+        );
+
+    box-shadow:
+        0 0 10px rgba(112, 229, 154, .5);
 }
 
 .rodape strong {
@@ -655,106 +1080,140 @@ button {
 
 .rodape p,
 .rodape span {
-    color: rgba(255, 255, 255, .7);
+    color: rgba(255,255,255,.7);
+
     font-size: 12px;
 }
 
 
-/* =========================
+/* =========================================================
    MODAL
-========================= */
+========================================================= */
 
 .modal-fundo {
     display: none;
 
     position: fixed;
+
     inset: 0;
 
     z-index: 100;
 
     padding: 25px;
 
-    background: rgba(16, 32, 25, .68);
+    background:
+        rgba(8, 28, 19, .76);
 
     overflow-y: auto;
+
+    backdrop-filter: blur(6px);
 }
 
 .modal-fundo.aberto {
     display: flex;
+
     justify-content: center;
+
     align-items: flex-start;
 }
 
 .modal {
     width: min(950px, 100%);
+
     margin: 20px auto;
 
     position: relative;
+
     overflow: hidden;
 
     background: var(--creme);
 
+    border:
+        1px solid rgba(112, 229, 154, .25);
+
     border-radius: 23px;
 
-    box-shadow: 0 30px 80px rgba(0, 0, 0, .25);
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.35),
+        0 0 35px rgba(58,166,106,.12);
 }
 
 
-/* =========================
+/* =========================================================
    FECHAR MODAL
-========================= */
+========================================================= */
 
 .fechar-modal {
     width: 40px;
     height: 40px;
 
     position: absolute;
+
     right: 18px;
     top: 18px;
 
     z-index: 5;
 
     border: 0;
+
     border-radius: 50%;
 
-    background: rgba(255, 255, 255, .94);
+    background:
+        rgba(255,255,255,.94);
+
     color: var(--verde);
 
     font-size: 27px;
+
+    box-shadow:
+        0 0 12px rgba(112,229,154,.18);
+}
+
+.fechar-modal:hover {
+    color: var(--vermelho);
+
+    box-shadow:
+        0 0 15px rgba(217,107,93,.25);
 }
 
 
-/* =========================
+/* =========================================================
    IMAGEM DO MODAL
-========================= */
+========================================================= */
 
 .modal-imagem {
     height: 270px;
 
     display: grid;
+
     place-items: center;
 
     overflow: hidden;
 
-    background: linear-gradient(
-        135deg,
-        var(--claro),
-        #f3e8d8
-    );
+    background:
+        linear-gradient(
+            135deg,
+            var(--verde-claro),
+            var(--bege2)
+        );
 
     font-size: 90px;
+
+    border-bottom:
+        1px solid rgba(112,229,154,.25);
 }
 
 .modal-imagem img {
     width: 100%;
     height: 100%;
+
     object-fit: cover;
 }
 
 
-/* =========================
+/* =========================================================
    CONTEÚDO DO MODAL
-========================= */
+========================================================= */
 
 .modal-conteudo {
     padding: 30px 35px 35px;
@@ -762,7 +1221,9 @@ button {
 
 .modal-topo {
     display: flex;
+
     justify-content: space-between;
+
     gap: 20px;
 }
 
@@ -773,6 +1234,7 @@ button {
     font-weight: 800;
 
     text-transform: uppercase;
+
     letter-spacing: 1.4px;
 }
 
@@ -782,7 +1244,9 @@ button {
     color: var(--verde);
 
     font-family: "Playfair Display", serif;
+
     font-size: 38px;
+
     line-height: 1.15;
 }
 
@@ -792,32 +1256,48 @@ button {
 
     flex-shrink: 0;
 
-    border: 1px solid var(--borda);
+    border:
+        1px solid var(--borda);
+
     border-radius: 50%;
 
     background: #fff;
+
     color: var(--laranja);
 
     font-size: 24px;
+
+    transition: .2s ease;
+}
+
+.botao-favorito-modal:hover {
+    box-shadow:
+        0 0 14px rgba(229,138,77,.25);
 }
 
 .botao-favorito-modal.ativo {
     background: var(--laranja);
+
     color: #fff;
+
+    box-shadow:
+        0 0 14px rgba(229,138,77,.3);
 }
 
 .modal-descricao {
     margin: 13px 0 20px;
+
     color: var(--cinza);
 }
 
 
-/* =========================
+/* =========================================================
    DADOS DA RECEITA
-========================= */
+========================================================= */
 
 .dados-receita {
     display: flex;
+
     gap: 12px;
 
     margin-bottom: 28px;
@@ -829,43 +1309,70 @@ button {
     padding: 12px;
 
     display: grid;
+
     grid-template-columns: 24px 1fr;
+
     column-gap: 5px;
 
     background: #fff;
-    border: 1px solid var(--borda);
+
+    border:
+        1px solid var(--borda);
+
     border-radius: 12px;
+
+    box-shadow:
+        0 5px 15px rgba(36,79,60,.04);
+}
+
+.dados-receita div:nth-child(1) {
+    border-top-color: var(--verde3);
+}
+
+.dados-receita div:nth-child(2) {
+    border-top-color: var(--amarelo);
+}
+
+.dados-receita div:nth-child(3) {
+    border-top-color: var(--laranja);
 }
 
 .dados-receita span {
     grid-row: span 2;
+
     color: var(--laranja);
 }
 
 .dados-receita strong {
     color: var(--verde);
+
     font-size: 12px;
 }
 
 .dados-receita small {
     color: var(--cinza);
+
     font-size: 9px;
 }
 
 
-/* =========================
+/* =========================================================
    INGREDIENTES / PREPARO
-========================= */
+========================================================= */
 
 .modal-grid {
     display: grid;
+
     grid-template-columns: .8fr 1.2fr;
+
     gap: 35px;
 }
 
 .modal-grid h3 {
     margin-bottom: 13px;
+
     color: var(--verde);
+
     font-size: 18px;
 }
 
@@ -884,26 +1391,39 @@ button {
 
 .modal-grid li::marker {
     color: var(--laranja);
+
     font-weight: 700;
 }
 
 
-/* =========================
+/* =========================================================
    DICA DA RECEITA
-========================= */
+========================================================= */
 
 .dica-receita {
     margin-top: 27px;
+
     padding: 17px;
 
-    border-left: 4px solid var(--laranja);
+    border-left:
+        4px solid var(--amarelo);
+
     border-radius: 8px;
 
-    background: #f1eadc;
+    background:
+        linear-gradient(
+            135deg,
+            #f7edb8,
+            #f3ead8
+        );
+
+    box-shadow:
+        inset 0 0 15px rgba(232,200,74,.08);
 }
 
 .dica-receita strong {
     color: var(--verde);
+
     font-size: 13px;
 }
 
@@ -911,19 +1431,20 @@ button {
     margin-top: 3px;
 
     color: var(--cinza);
+
     font-size: 12px;
 }
 
 
-/* =========================
-   RESPONSIVIDADE
-   TABLET
-========================= */
+/* =========================================================
+   RESPONSIVIDADE — TABLET
+========================================================= */
 
 @media (max-width: 1050px) {
 
     .grid-receitas {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns:
+            repeat(3, 1fr);
     }
 
     .hero {
@@ -933,10 +1454,9 @@ button {
 }
 
 
-/* =========================
-   RESPONSIVIDADE
-   CELULAR MÉDIO
-========================= */
+/* =========================================================
+   RESPONSIVIDADE — CELULAR MÉDIO
+========================================================= */
 
 @media (max-width: 800px) {
 
@@ -956,7 +1476,8 @@ button {
     }
 
     .grid-receitas {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
     .favoritos-toggle {
@@ -965,10 +1486,9 @@ button {
 }
 
 
-/* =========================
-   RESPONSIVIDADE
-   CELULAR
-========================= */
+/* =========================================================
+   RESPONSIVIDADE — CELULAR
+========================================================= */
 
 @media (max-width: 560px) {
 
@@ -1014,6 +1534,7 @@ button {
 
     .dados-receita {
         display: grid;
+
         grid-template-columns: 1fr 1fr;
     }
 
@@ -1035,6 +1556,7 @@ button {
 
     .modal-grid {
         grid-template-columns: 1fr;
+
         gap: 25px;
     }
 
@@ -1042,3 +1564,4 @@ button {
         flex-direction: column;
     }
 }
+```

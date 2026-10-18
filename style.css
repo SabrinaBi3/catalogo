@@ -1,1044 +1,528 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
-
-/* =========================
-   VARIÁVEIS
-========================= */
-
+/* =========================================================
+   TOKENS
+   ========================================================= */
 :root {
-    --verde: #244f3c;
-    --verde2: #36745a;
-    --claro: #e7f0e9;
-    --creme: #f8f5ed;
-    --branco: #fff;
-    --laranja: #d87943;
-    --texto: #24322b;
-    --cinza: #6d7771;
-    --borda: #e3e5df;
-    --sombra: 0 18px 45px rgba(36, 79, 60, .10);
+  --verde-escuro: #1f3d2e;
+  --verde-escuro-2: #16301f;
+  --oliva: #7d8f5c;
+  --terracota: #a6431c;
+  --terracota-escura: #7e3115;
+  --mostarda: #d9a441;
+  --creme: #faf5e8;
+  --prato: #fffbf3;
+  --carvao: #2b2a25;
+  --carvao-suave: #5c4d40;
+  --linha: #e2d3b8;
+
+  --fonte-titulo: 'Fraunces', serif;
+  --fonte-texto: 'Work Sans', sans-serif;
 }
 
-
-/* =========================
-   RESET / BASE
-========================= */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+* { box-sizing: border-box; }
 
 body {
-    font-family: "DM Sans", sans-serif;
-    color: var(--texto);
-    background: var(--creme);
-    line-height: 1.6;
+  margin: 0;
+  background-color: var(--creme);
+  color: var(--carvao);
+  font-family: var(--fonte-texto);
+  font-size: 17px;
 }
 
-button,
-input {
-    font: inherit;
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 32px;
 }
 
-button {
-    cursor: pointer;
+h1, h2, h3 {
+  font-family: var(--fonte-titulo);
+  color: var(--verde-escuro-2);
+  margin: 0 0 16px 0;
+  line-height: 1.2;
 }
 
+h1 { font-size: 2.4rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.25rem; }
 
-/* =========================
+p {
+  line-height: 1.6;
+  margin: 0 0 18px 0;
+  max-width: 68ch;
+}
+
+p.justificado { text-align: justify; }
+
+a { color: var(--terracota); }
+
+ul { margin: 0; padding: 0; }
+li { line-height: 1.6; }
+
+/* =========================================================
    CABEÇALHO
-========================= */
+   ========================================================= */
+header.topo {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background-color: var(--verde-escuro);
+}
 
-.cabecalho {
-    min-height: 78px;
-    padding: 0 7%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    background: rgba(248, 245, 237, .96);
-    border-bottom: 1px solid var(--borda);
-
-    position: sticky;
-    top: 0;
-    z-index: 50;
-
-    backdrop-filter: blur(12px);
+.topo-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
 }
 
 .marca {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  font-family: var(--fonte-titulo);
+  color: var(--creme);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0;
 }
 
-.logo {
-    width: 43px;
-    height: 43px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 13px;
-
-    background: var(--verde);
-    color: #fff;
-
-    font-size: 23px;
+.topo nav ul {
+  list-style: none;
+  display: flex;
+  gap: 22px;
 }
 
-.marca strong {
-    display: block;
-    color: var(--verde);
-
-    letter-spacing: 1.5px;
-    font-size: 15px;
+.topo nav a {
+  color: var(--creme);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.6px;
+  font-weight: 500;
+  padding: 6px 4px;
 }
 
-.marca small {
-    display: block;
-    color: var(--cinza);
-    font-size: 11px;
+.topo nav a:hover { color: var(--mostarda); }
+
+main { padding-top: 66px; }
+
+/* aba fixa lateral */
+.aba-receitas {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%) rotate(180deg);
+  writing-mode: vertical-rl;
+  background-color: var(--terracota);
+  color: var(--creme);
+  text-decoration: none;
+  padding: 16px 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  z-index: 90;
 }
 
-.cabecalho-info {
-    color: var(--verde2);
-    font-size: 13px;
-    font-weight: 600;
+.aba-receitas:hover { background-color: var(--terracota-escura); }
+
+/* =========================================================
+   BANNER MOSAICO
+   ========================================================= */
+.mosaico {
+  position: relative;
+  height: 260px;
+  background-image: url('comidas.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: var(--verde-escuro-2);
+  overflow: hidden;
 }
 
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-    min-height: 440px;
-    padding: 70px 10%;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 50px;
-
-    background:
-        radial-gradient(
-            circle at 80% 25%,
-            rgba(54, 116, 90, .18),
-            transparent 28%
-        ),
-        linear-gradient(
-            135deg,
-            #eef3eb 0%,
-            #f8f5ed 68%
-        );
-
-    overflow: hidden;
+@media (min-width: 700px) {
+  .mosaico { height: 320px; }
 }
 
-.hero-conteudo {
-    max-width: 700px;
+.mosaico .legenda {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(22, 48, 31, 0.45);
+  text-align: center;
+  padding: 12px;
 }
 
-.etiqueta,
-.mini-etiqueta {
-    color: var(--laranja);
-
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 2px;
+.mosaico .legenda h1 {
+  color: var(--prato);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 2.2rem;
 }
 
-.hero h1 {
-    margin: 12px 0 18px;
-
-    font-family: "Playfair Display", serif;
-    color: var(--verde);
-
-    font-size: clamp(38px, 5vw, 66px);
-    line-height: 1.08;
+.mosaico .legenda p {
+  color: var(--prato);
+  margin: 0;
+  font-size: 1.05rem;
 }
 
-.hero h1 strong {
-    color: var(--laranja);
+/* =========================================================
+   ILUSTRAÇÃO / APRESENTAÇÃO
+   ========================================================= */
+.apresentacao { padding-top: 40px; }
+
+.ilustracao-flutuante {
+  float: left;
+  width: 230px;
+  margin: 4px 26px 16px 0;
+  border-radius: 4px;
+  display: block;
 }
 
-.hero p {
-    max-width: 610px;
-
-    color: var(--cinza);
-    font-size: 17px;
+.foto-flutuante-direita {
+  float: right;
+  width: 260px;
+  margin: 4px 0 16px 26px;
+  border-radius: 4px;
+  display: block;
 }
 
+.clearfix::after { content: ""; display: table; clear: both; }
 
-/* =========================
-   ESTATÍSTICAS
-========================= */
-
-.estatisticas {
-    display: flex;
-    gap: 35px;
-    margin-top: 32px;
+/* =========================================================
+   CITAÇÃO
+   ========================================================= */
+blockquote.citacao {
+  font-style: italic;
+  color: var(--terracota-escura);
+  font-family: var(--fonte-titulo);
+  font-size: 1.2rem;
+  background-color: #efe6cf;
+  border-left: 4px solid var(--terracota);
+  padding: 20px 26px;
+  margin: 0 0 28px 0;
 }
 
-.estatisticas div {
-    display: flex;
-    flex-direction: column;
+blockquote.citacao footer {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--carvao-suave);
+  font-style: normal;
+  font-family: var(--fonte-texto);
 }
 
-.estatisticas strong {
-    color: var(--verde);
-    font-size: 25px;
+.quote-oliva {
+  background-color: var(--oliva);
+  color: var(--prato);
+  padding: 26px 30px;
+  font-family: var(--fonte-titulo);
+  font-style: italic;
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
-.estatisticas span {
-    color: var(--cinza);
-
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: .8px;
+/* =========================================================
+   TABELA / CRONOGRAMA
+   ========================================================= */
+.secao-oliva {
+  background-color: var(--oliva);
+  padding: 30px 32px;
+  margin-bottom: 28px;
 }
 
+.secao-oliva h2 { color: var(--prato); }
 
-/* =========================
-   VISUAL DO HERO
-========================= */
-
-.hero-visual {
-    width: 310px;
-    height: 310px;
-
-    position: relative;
-    flex-shrink: 0;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--prato);
 }
 
-.circulo {
-    width: 245px;
-    height: 245px;
-
-    position: absolute;
-    inset: 30px;
-
-    display: grid;
-    place-items: center;
-
-    border: 2px dashed rgba(36, 79, 60, .3);
-    border-radius: 50%;
-
-    color: var(--verde);
-    background: rgba(255, 255, 255, .55);
-
-    font-size: 92px;
+th, td {
+  border: 1px solid var(--linha);
+  padding: 12px 14px;
+  text-align: left;
 }
 
-.folha,
-.semente {
-    width: 62px;
-    height: 62px;
-
-    position: absolute;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 50%;
-
-    background: #fff;
-    box-shadow: var(--sombra);
-
-    font-size: 28px;
+th {
+  background-color: var(--verde-escuro);
+  color: var(--creme);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
 }
 
-.folha1 {
-    top: 5px;
-    right: 25px;
+/* =========================================================
+   FORMULÁRIO
+   ========================================================= */
+form.contato {
+  border: 2px dashed var(--oliva);
+  padding: 28px;
+  margin-bottom: 28px;
 }
 
-.folha2 {
-    bottom: 10px;
-    left: 0;
+form label { display: block; margin-bottom: 6px; font-weight: 500; }
+
+input[type="text"], input[type="email"], textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 18px;
+  border: 1px solid var(--linha);
+  border-radius: 3px;
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
 }
 
-.semente {
-    right: 0;
-    bottom: 55px;
+textarea { resize: vertical; min-height: 100px; }
+
+fieldset {
+  border: 1px solid var(--linha);
+  padding: 16px;
+  margin-bottom: 18px;
+  border-radius: 3px;
 }
 
+fieldset legend { padding: 0 8px; font-weight: 600; color: var(--verde-escuro-2); }
 
-/* =========================
-   CATÁLOGO
-========================= */
+.opcao { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.opcao input { margin: 0; }
 
-.catalogo {
-    max-width: 1300px;
-    margin: auto;
-    padding: 70px 5% 90px;
+button[type="submit"] {
+  background-color: var(--terracota);
+  color: var(--creme);
+  border: none;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-family: var(--fonte-texto);
+  font-weight: 600;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
-.titulo-secao {
-    margin-bottom: 30px;
+button[type="submit"]:hover { background-color: var(--terracota-escura); }
+
+/* =========================================================
+   CATÁLOGO / GRADE DE RECEITAS
+   ========================================================= */
+.catalogo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 20px;
 }
 
-.titulo-secao h2 {
-    margin-top: 5px;
-
-    color: var(--verde);
-
-    font-family: "Playfair Display", serif;
-    font-size: clamp(28px, 4vw, 43px);
+.cartao-receita {
+  display: block;
+  text-decoration: none;
+  color: var(--carvao);
+  background-color: var(--prato);
+  border: 1px solid var(--linha);
+  overflow: hidden;
 }
 
-.titulo-secao p {
-    margin-top: 5px;
-    color: var(--cinza);
+.thumb-wrap {
+  position: relative;
+  padding-top: 75%;
+  overflow: hidden;
+  background-color: var(--linha);
 }
 
-
-/* =========================
-   CONTROLES
-========================= */
-
-.controles {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-
-    gap: 13px;
-    margin-bottom: 17px;
+.thumb-wrap img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.campo-busca {
-    min-width: 280px;
-    max-width: 430px;
-    flex: 1;
-
-    height: 49px;
-
-    display: flex;
-    align-items: center;
-    gap: 9px;
-
-    padding: 0 15px;
-
-    background: #fff;
-    border: 1px solid var(--borda);
-    border-radius: 13px;
+.cartao-receita .legenda-cartao {
+  padding: 14px 16px;
+  font-family: var(--fonte-titulo);
+  font-size: 1.02rem;
+  text-align: center;
+  border-top: 1px solid var(--linha);
 }
 
-.campo-busca span {
-    color: var(--cinza);
-    font-size: 24px;
+.cartao-receita:hover .legenda-cartao {
+  color: var(--terracota);
 }
 
-.campo-busca input {
-    width: 100%;
-
-    border: 0;
-    outline: 0;
-
-    color: var(--texto);
-    background: transparent;
+/* =========================================================
+   SOBRE — LAYOUT COM BARRA LATERAL
+   ========================================================= */
+.sobre-layout {
+  display: flex;
+  gap: 36px;
+  align-items: flex-start;
+  margin-bottom: 28px;
 }
 
+.sobre-principal { flex: 3; }
 
-/* =========================
-   FILTROS
-========================= */
-
-.filtros {
-    display: flex;
-    gap: 7px;
-    flex-wrap: wrap;
+.sobre-lateral {
+  flex: 1.4;
+  background-color: var(--oliva);
+  color: var(--prato);
+  padding: 24px;
 }
 
-.filtro {
-    padding: 10px 14px;
+.sobre-lateral h3 { color: var(--prato); font-size: 1.15rem; }
 
-    border: 1px solid var(--borda);
-    border-radius: 10px;
+.sobre-lateral ul { list-style: none; }
 
-    color: var(--cinza);
-    background: #fff;
+.sobre-lateral li { margin-bottom: 18px; font-size: 0.92rem; }
 
-    font-size: 12px;
-    font-weight: 700;
+.sobre-lateral li strong { display: block; margin-bottom: 4px; font-family: var(--fonte-titulo); }
+
+@media (max-width: 720px) {
+  .sobre-layout { flex-direction: column; }
 }
 
-.filtro:hover,
-.filtro.ativo {
-    background: var(--verde);
-    border-color: var(--verde);
-    color: #fff;
+/* =========================================================
+   PÁGINA DE RECEITA
+   ========================================================= */
+.receita-banner {
+  position: relative;
+  background-color: var(--terracota);
+  background-size: cover;
+  background-position: center;
+  color: var(--prato);
+  text-align: center;
+  padding: 70px 32px;
+  margin-bottom: 40px;
+  isolation: isolate;
 }
 
-
-/* =========================
-   FAVORITOS
-========================= */
-
-.favoritos-toggle {
-    margin-left: auto;
-
-    display: flex;
-    align-items: center;
-    gap: 6px;
-
-    color: var(--cinza);
-
-    font-size: 13px;
-    font-weight: 600;
-
-    white-space: nowrap;
+.receita-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(126, 49, 21, 0.68);
+  z-index: -1;
 }
 
-.favoritos-toggle input {
-    accent-color: var(--verde);
+.receita-banner h1 {
+  color: var(--prato);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 2.4rem;
+  margin: 0 auto;
+  max-width: 20ch;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.25);
 }
 
-.favoritos-toggle span {
-    color: var(--laranja);
-    font-size: 20px;
+.receita-corpo {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 40px;
+  padding-bottom: 60px;
 }
 
-
-/* =========================
-   RESULTADOS
-========================= */
-
-.resultado-info {
-    min-height: 35px;
-    margin-bottom: 20px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    color: var(--cinza);
-    font-size: 13px;
+.receita-corpo h2 {
+  font-family: var(--fonte-texto);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--terracota);
+  border-bottom: 2px solid var(--terracota);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
 }
 
-.limpar {
-    border: 0;
-    background: transparent;
-
-    color: var(--laranja);
-    font-weight: 700;
-
-    display: none;
+.lista-ingredientes {
+  background-color: var(--prato);
+  border: 1px solid var(--linha);
+  padding: 18px 20px;
+  margin-bottom: 20px;
 }
 
+.lista-ingredientes ul { list-style: none; }
 
-/* =========================
-   GRID DE RECEITAS
-========================= */
-
-.grid-receitas {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
+.lista-ingredientes li {
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--linha);
+  font-style: italic;
+  color: var(--carvao-suave);
 }
 
+.lista-ingredientes li:last-child { border-bottom: none; }
 
-/* =========================
-   CARD
-========================= */
-
-.card {
-    position: relative;
-    overflow: hidden;
-
-    background: #fff;
-    border: 1px solid var(--borda);
-    border-radius: 19px;
-
-    box-shadow: 0 7px 25px rgba(36, 79, 60, .06);
-
-    transition:
-        transform .2s ease,
-        box-shadow .2s ease;
+.lista-ingredientes h4 {
+  font-family: var(--fonte-texto);
+  font-style: normal;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--verde-escuro-2);
+  margin: 14px 0 6px 0;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--sombra);
+.caixa-info {
+  background-color: #efe6cf;
+  border: 1px dashed var(--oliva);
+  padding: 16px 18px;
+  font-style: italic;
+  color: var(--carvao-suave);
+  font-size: 0.92rem;
 }
 
+.caixa-info strong { display: block; font-style: normal; margin-bottom: 6px; color: var(--verde-escuro-2); }
 
-/* =========================
-   IMAGEM DO CARD
-========================= */
-
-.card-imagem {
-    height: 205px;
-
-    display: grid;
-    place-items: center;
-
-    position: relative;
-    overflow: hidden;
-
-    background: linear-gradient(
-        135deg,
-        var(--claro),
-        #f5eee2
-    );
+.passo {
+  background-color: var(--prato);
+  border: 1px solid var(--linha);
+  border-left: 4px solid var(--terracota);
+  padding: 14px 18px;
+  margin-bottom: 14px;
 }
 
-.card-imagem img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.passo h3 {
+  font-family: var(--fonte-texto);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--terracota);
+  margin: 0 0 6px 0;
 }
 
-.imagem-fallback {
-    font-size: 62px;
+.passo p { margin: 0; max-width: none; }
+
+@media (max-width: 720px) {
+  .receita-corpo { grid-template-columns: 1fr; }
 }
 
-
-/* =========================
-   FAVORITO DO CARD
-========================= */
-
-.card-favorito {
-    width: 37px;
-    height: 37px;
-
-    position: absolute;
-    right: 12px;
-    top: 12px;
-
-    border: 0;
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, .94);
-    color: var(--laranja);
-
-    font-size: 21px;
-
-    box-shadow: 0 4px 15px rgba(0, 0, 0, .08);
-
-    z-index: 2;
-}
-
-.card-favorito.ativo {
-    background: var(--laranja);
-    color: #fff;
-}
-
-
-/* =========================
-   CONTEÚDO DO CARD
-========================= */
-
-.card-conteudo {
-    padding: 18px;
-}
-
-.card-categoria {
-    color: var(--laranja);
-
-    font-size: 10px;
-    font-weight: 800;
-
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-}
-
-.card h3 {
-    margin: 6px 0 8px;
-
-    color: var(--verde);
-
-    font-family: "Playfair Display", serif;
-    font-size: 21px;
-    line-height: 1.2;
-}
-
-.card p {
-    min-height: 49px;
-
-    color: var(--cinza);
-
-    font-size: 12px;
-    line-height: 1.45;
-}
-
-
-/* =========================
-   RODAPÉ DO CARD
-========================= */
-
-.card-rodape {
-    margin-top: 15px;
-    padding-top: 13px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-
-    border-top: 1px solid var(--borda);
-}
-
-.card-dados {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-
-    color: var(--cinza);
-    font-size: 10px;
-}
-
-.ver-receita {
-    padding: 8px 11px;
-
-    border: 0;
-    border-radius: 9px;
-
-    background: var(--verde);
-    color: #fff;
-
-    font-size: 11px;
-    font-weight: 700;
-}
-
-.ver-receita:hover {
-    background: var(--verde2);
-}
-
-
-/* =========================
-   SEM RESULTADOS
-========================= */
-
-.sem-resultados {
-    display: none;
-
-    padding: 70px 20px;
-
-    text-align: center;
-}
-
-.sem-resultados div {
-    font-size: 45px;
-}
-
-.sem-resultados h3 {
-    margin-top: 10px;
-    color: var(--verde);
-}
-
-.sem-resultados p {
-    color: var(--cinza);
-}
-
-
-/* =========================
+/* =========================================================
    RODAPÉ
-========================= */
-
-.rodape {
-    padding: 30px 7%;
-
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-
-    background: var(--verde);
-    color: #fff;
+   ========================================================= */
+footer.rodape {
+  background-color: var(--verde-escuro);
+  color: var(--creme);
+  text-align: center;
+  padding: 30px 32px;
 }
 
-.rodape strong {
-    letter-spacing: 1px;
+footer.rodape p { color: var(--creme); margin-bottom: 6px; max-width: none; }
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+@media (max-width: 700px) {
+  .topo-inner { flex-direction: column; gap: 10px; }
+  .topo nav ul { flex-wrap: wrap; justify-content: center; gap: 14px; }
+  main { padding-top: 96px; }
+  .ilustracao-flutuante, .foto-flutuante-direita { float: none; width: 100%; margin: 0 0 16px 0; }
+  .catalogo-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-.rodape p,
-.rodape span {
-    color: rgba(255, 255, 255, .7);
-    font-size: 12px;
-}
-
-
-/* =========================
-   MODAL
-========================= */
-
-.modal-fundo {
-    display: none;
-
-    position: fixed;
-    inset: 0;
-
-    z-index: 100;
-
-    padding: 25px;
-
-    background: rgba(16, 32, 25, .68);
-
-    overflow-y: auto;
-}
-
-.modal-fundo.aberto {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-.modal {
-    width: min(950px, 100%);
-    margin: 20px auto;
-
-    position: relative;
-    overflow: hidden;
-
-    background: var(--creme);
-
-    border-radius: 23px;
-
-    box-shadow: 0 30px 80px rgba(0, 0, 0, .25);
-}
-
-
-/* =========================
-   FECHAR MODAL
-========================= */
-
-.fechar-modal {
-    width: 40px;
-    height: 40px;
-
-    position: absolute;
-    right: 18px;
-    top: 18px;
-
-    z-index: 5;
-
-    border: 0;
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, .94);
-    color: var(--verde);
-
-    font-size: 27px;
-}
-
-
-/* =========================
-   IMAGEM DO MODAL
-========================= */
-
-.modal-imagem {
-    height: 270px;
-
-    display: grid;
-    place-items: center;
-
-    overflow: hidden;
-
-    background: linear-gradient(
-        135deg,
-        var(--claro),
-        #f3e8d8
-    );
-
-    font-size: 90px;
-}
-
-.modal-imagem img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-
-/* =========================
-   CONTEÚDO DO MODAL
-========================= */
-
-.modal-conteudo {
-    padding: 30px 35px 35px;
-}
-
-.modal-topo {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.modal-categoria {
-    color: var(--laranja);
-
-    font-size: 11px;
-    font-weight: 800;
-
-    text-transform: uppercase;
-    letter-spacing: 1.4px;
-}
-
-.modal h2 {
-    margin-top: 5px;
-
-    color: var(--verde);
-
-    font-family: "Playfair Display", serif;
-    font-size: 38px;
-    line-height: 1.15;
-}
-
-.botao-favorito-modal {
-    width: 46px;
-    height: 46px;
-
-    flex-shrink: 0;
-
-    border: 1px solid var(--borda);
-    border-radius: 50%;
-
-    background: #fff;
-    color: var(--laranja);
-
-    font-size: 24px;
-}
-
-.botao-favorito-modal.ativo {
-    background: var(--laranja);
-    color: #fff;
-}
-
-.modal-descricao {
-    margin: 13px 0 20px;
-    color: var(--cinza);
-}
-
-
-/* =========================
-   DADOS DA RECEITA
-========================= */
-
-.dados-receita {
-    display: flex;
-    gap: 12px;
-
-    margin-bottom: 28px;
-}
-
-.dados-receita div {
-    min-width: 120px;
-
-    padding: 12px;
-
-    display: grid;
-    grid-template-columns: 24px 1fr;
-    column-gap: 5px;
-
-    background: #fff;
-    border: 1px solid var(--borda);
-    border-radius: 12px;
-}
-
-.dados-receita span {
-    grid-row: span 2;
-    color: var(--laranja);
-}
-
-.dados-receita strong {
-    color: var(--verde);
-    font-size: 12px;
-}
-
-.dados-receita small {
-    color: var(--cinza);
-    font-size: 9px;
-}
-
-
-/* =========================
-   INGREDIENTES / PREPARO
-========================= */
-
-.modal-grid {
-    display: grid;
-    grid-template-columns: .8fr 1.2fr;
-    gap: 35px;
-}
-
-.modal-grid h3 {
-    margin-bottom: 13px;
-    color: var(--verde);
-    font-size: 18px;
-}
-
-.modal-grid ul,
-.modal-grid ol {
-    padding-left: 20px;
-}
-
-.modal-grid li {
-    margin-bottom: 9px;
-
-    color: var(--cinza);
-
-    font-size: 13px;
-}
-
-.modal-grid li::marker {
-    color: var(--laranja);
-    font-weight: 700;
-}
-
-
-/* =========================
-   DICA DA RECEITA
-========================= */
-
-.dica-receita {
-    margin-top: 27px;
-    padding: 17px;
-
-    border-left: 4px solid var(--laranja);
-    border-radius: 8px;
-
-    background: #f1eadc;
-}
-
-.dica-receita strong {
-    color: var(--verde);
-    font-size: 13px;
-}
-
-.dica-receita p {
-    margin-top: 3px;
-
-    color: var(--cinza);
-    font-size: 12px;
-}
-
-
-/* =========================
-   RESPONSIVIDADE
-   TABLET
-========================= */
-
-@media (max-width: 1050px) {
-
-    .grid-receitas {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    .hero {
-        padding-left: 7%;
-        padding-right: 7%;
-    }
-}
-
-
-/* =========================
-   RESPONSIVIDADE
-   CELULAR MÉDIO
-========================= */
-
-@media (max-width: 800px) {
-
-    .cabecalho-info {
-        display: none;
-    }
-
-    .hero {
-        min-height: auto;
-
-        padding-top: 55px;
-        padding-bottom: 55px;
-    }
-
-    .hero-visual {
-        display: none;
-    }
-
-    .grid-receitas {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .favoritos-toggle {
-        margin-left: 0;
-    }
-}
-
-
-/* =========================
-   RESPONSIVIDADE
-   CELULAR
-========================= */
-
-@media (max-width: 560px) {
-
-    .cabecalho {
-        padding: 0 5%;
-    }
-
-    .hero {
-        padding: 45px 6%;
-    }
-
-    .hero h1 {
-        font-size: 38px;
-    }
-
-    .estatisticas {
-        gap: 20px;
-    }
-
-    .catalogo {
-        padding: 50px 5% 65px;
-    }
-
-    .grid-receitas {
-        grid-template-columns: 1fr;
-    }
-
-    .card-imagem {
-        height: 230px;
-    }
-
-    .campo-busca {
-        min-width: 100%;
-    }
-
-    .filtros {
-        width: 100%;
-    }
-
-    .filtro {
-        flex: 1;
-    }
-
-    .dados-receita {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .dados-receita div:last-child {
-        grid-column: span 2;
-    }
-
-    .modal-fundo {
-        padding: 8px;
-    }
-
-    .modal-conteudo {
-        padding: 25px 20px;
-    }
-
-    .modal h2 {
-        font-size: 30px;
-    }
-
-    .modal-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    .rodape {
-        flex-direction: column;
-    }
+@media (max-width: 500px) {
+  .catalogo-grid { grid-template-columns: 1fr; }
+  .mosaico .legenda h1 { font-size: 1.5rem; }
 }
